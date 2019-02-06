@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row slots-wrapper">
+            <div class="col-lg-3 slots-buttons-wrapper">
+                <div class="slots-buttons">
+                    <div class="tap">
+                        <img src="assets/img/кран.png" alt="">
+                        <div class="slots-buttons-btn slots-buttons-btn-x2">
+                            <span class="slots-buttons-btn-text">x 2</span>
+                        </div>
+                        <div class="slots-buttons-btn slots-buttons-btn-x05" >
+                            <span class="slots-buttons-btn-text ">x 1/2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="slots-game-wrapper">
+                    <div class="slots-game-border">
+                        <div class="slots-game-head">
+                            <div class="slots-game-currency-count">
+                                <div class="slots-game-currency-count-text">
+                                    <img src="assets/img/валюта.png" alt="">
+                                    <span id="currency-count">4242</span>
+                                </div>
+                            </div>
+                            <div class="slots-game-currency-count-screw slots-game-currency-count-screw-left"><img src="assets/img/screw-1.png" alt=""></div>
+                            <div class="slots-game-currency-count-screw slots-game-currency-count-screw-right"><img src="assets/img/screw-2.png" alt=""></div>
+                        </div>
+                        <div class="slots-game-field" id="canvas-wrapper"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="slots-statistics">
+                    <div class="slots-statistics-ropes">
+                        <img src="assets/img/rope.png" alt=""><img src="assets/img/rope.png" alt="">
+                    </div>
+                    <div class="slots-statistics-border">
+                        <div class="slots-statistics-list">
+                            <div class="slots-statistics-list-hover">
+                                    <table class="slots-statistics-list-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>игра</th>
+                                                    <th>результат</th>
+                                                </tr>
+                                            </thead>
+                                            <tr>
+                                                <td><span> 1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>1</span></td>
+                                                <td><span>1</span></td>
+                                            </tr>
+                                        </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="slots-input">
+                    <input type="text">
+                </div>
+            </div>
+            <div class="col-lg-4 slots-spin">
+                <div class="slots-spin-btn-background" id="game-start">
+                        <div class="slots-spin-btn-background-glass"></div>
+                    <button class="slots-spin-btn" >spin</button>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="slots-start">
+                    
+                </div>
+            </div>
+
+        </div>
+        
+
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script>
+        var canvas = document.createElement('canvas');
+        var canvasWrapper = document.getElementById('canvas-wrapper')
+        var gameStart = document.getElementById('game-start')
+        var requestAnimationFrame =  window.requestAnimationFrame ||
+                     window.webkitRequestAnimationFrame ||
+                     window.mozRequestAnimationFrame ||
+                     window.oRequestAnimationFrame ||
+                     window.msRequestAnimationFrame ||
+                     function (callback) {
+                             window.setTimeout(callback, 1000 / 60);
+                     };
+ 
+        window.requestAnimationFrame = requestAnimationFrame;
+    
+        //Общие игровые параметры
+        var gameParams = {
+            slots: {
+                plum:{
+                    'src'   : 'assets/img/lots/слива.png',
+                    'type'  : 'plum'
+                },
+                apple:{
+                    'src'   : 'assets/img/lots/яблоко.png',
+                    'type'  : 'apple'
+                },
+                pear:{
+                    'src'   : 'assets/img/lots/груша.png',
+                    'type'  : 'pear'
+                },
+                grapes:{
+                    'src'   : 'assets/img/lots/виноград.png',
+                    'type'  : 'grapes'
+                },
+                cherry:{
+                    'src'   : 'assets/img/lots/вишня.png',
+                    'type'  : 'cherry'
+                },
+                watermelon:{
+                    'src'   : 'assets/img/lots/арбуз.png',
+                    'type'  : 'watermelon'
+                },
+                pineapple:{
+                    'src'   : 'assets/img/lots/ананас.png',
+                    'type'  : 'pineapple'
+                },
+                lemon:{
+                    'src'   : 'assets/img/lots/лимон.png',
+                    'type'  : 'lemon'
+                },
+                coconut:{
+                    'src'   : 'assets/img/lots/кокос.png',
+                    'type'  : 'coconut'
+                }
+            },
+            slotHeight: 136,
+            slotWidth:  170,
+            gameColumns: 3,
+            gameDelay: 3000
+
+        }
+        canvas.setAttribute('width', gameParams.slotWidth*gameParams.gameColumns)
+        canvas.setAttribute('height', gameParams.slotHeight*3)
+        canvasWrapper.appendChild(canvas)
+        canvasContext = canvas.getContext('2d')
+        // подгружаем изображение
+        function loadImage(path,width,height,y,type){
+            var image = document.createElement('img');
+            var result = {
+                dom: image,
+                width: width,
+                height: height,
+                loaded: false,
+                y: (gameParams.slotHeight*2)-y,
+                type: type
+            }
+            image.onload = function(){
+                result.loaded = true;
+            }
+            image.src = path;
+            return result;
+        }
+///////////////////////////////////////////////
+        let gameColumn = function(slots,number){
+            this.slots = slots
+            this.number = number
+        }
+        gameColumn.prototype = {
+            actions: function(speed){
+                this.move(speed)
+            },
+            move: function(speed){
+                let column = this.slots
+                for(slot of column){
+                    //console.log(slot.y+speed, speed, slot.y+speed+slot.height)
+                    slot.y = slot.y+speed
+                    
+                    if(slot.y> slot.height*3){
+                        let dist = slot.y - slot.height*3
+                        slot.y = (slot.height*3)-(slot.height*9)+dist
+                    }
+                }
+            },
+            stop: function(){
+                let column = this.slots
+                //console.log(this)
+                gameColumnStopRotation(column)
+            }
+        }
+        let gameColumnStopRotation = function(column){
+            let slotsY = []
+            for(slot of column){
+                slotsY.push(slot.y)
+            }
+            let maxY = Math.max.apply(null,slotsY)
+            let startPosition = (gameParams.slotHeight*2)
+            let distanceToPosition = maxY -  startPosition
+            for(slot of column){
+                //console.log(slot,slot.y,slot.y/slot.height)
+                slot.y = Math.floor(slot.y/slot.height)*slot.height
+                
+            }
+        }
+        let gameSlotsCombine = function(slots){
+            let gameSlotsArr = []
+            for(let key in slots){
+                gameSlotsArr.push(slots[key])
+            }
+            //gameSlotsArr.sort(compareRandom)
+            return gameSlotsArr
+        }
+        var gameSlots = gameSlotsCombine(gameParams.slots)
+        let createGameField = function(slots){
+            let gameField = []
+            let numb = 0
+            
+            for(let i=0; i<gameParams.gameColumns; i++){
+                let slotY = 0
+                let slotColumnArr = [];
+                slots.sort(compareRandom)
+                for(let key in slots){
+                    let slot = loadImage(slots[key].src,gameParams.slotWidth,gameParams.slotHeight,slotY,slots[key].type)
+                    slotColumnArr.push(slot)
+                    slotY= slotY+gameParams.slotHeight
+                }  
+                slotColumnArr.sort(compareRandom)
+                slotColumn = new gameColumn(slotColumnArr,numb)
+                numb++
+                gameField.push(slotColumn)
+
+            }
+            
+            return gameField
+            
+        }
+        let gameField = createGameField(gameSlots)
+
+        function compareRandom(a, b) {
+            return Math.random() - 0.5;     
+        }
+       let drawGameField = function(gameField){
+            canvasContext.clearRect(0,0,2000,2000)
+            let columnX = 0
+           for(column in gameField){
+               for(let slot of gameField[column].slots){
+                    canvasContext.drawImage(slot.dom,columnX,slot.y,slot.width,slot.height)
+               }
+               columnX = columnX + gameParams.slotWidth
+           }
+       }
+       drawGameField(gameField)
+
+
+        ///////////////////////////////////////////
+        
+
+        let rotateGameField = function(gameFields,dy){
+            
+            for(let key in gameFields){
+                let speed = dy
+                gameFields[key].actions(dy)
+            }
+           
+            return gameFields
+        }
+    
+        window.onload = function(){
+            drawGameField(gameField)
+        }
+
+        gameStart.onclick = function(){
+            gameRotate()
+        }
+       
+        let rotate = false
+        let gameRotate = function(){
+            if(!rotate){
+                //gameField = createGameField(gameSlots)
+                rotate = true
+                let timeDelay = gameParams.gameDelay
+                let speedRotate = 20
+                for(let i = 0; i<gameField.length; i++){
+                    
+                    columnTimeDelay = ((timeDelay/gameField.length)*(i+1))-10
+                    gameField[i].actions = function(){this.move(speedRotate+i*2)}
+                    setTimeout(function(){
+                        gameField[i].actions = function(){}
+                        gameField[i].stop()
+                    },columnTimeDelay)
+                    
+                }
+                
+                gameLoop()
+                setTimeout(function(){
+                    rotate = false
+                },timeDelay+100)
+            }
+            
+            
+        }
+        let gameLoop = function(){
+            if(!rotate) return
+            gameField = rotateGameField(gameField)
+            drawGameField(gameField)
+            requestAnimationFrame(gameLoop)
+        }
+    </script>
+</body>
+</html>

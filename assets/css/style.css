@@ -1,0 +1,236 @@
+body{
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        background: url(../img/back.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center
+    }
+.slots-wrapper{
+    padding-top: 100px 
+}
+.slots-buttons-wrapper{
+    display: flex;
+    align-items: center;
+}
+.slots-buttons{
+    position: relative;
+}
+.tap img{
+    width: 80%
+}
+.slots-buttons-btn{
+    width: 170px;
+    height: 170px;
+    border-radius: 100%;
+    cursor: pointer;
+    background: url(../img/button.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 40px;
+    user-select: none;
+}
+.slots-buttons-btn:active{
+    filter: brightness(91%)
+}
+.slots-buttons-btn-text{
+    font: 600 48px/12px 'Myriad Pro';
+    color: #fff;
+}
+.slots-buttons-btn-x2{
+    top: -25%;
+}
+.slots-buttons-btn-x05{
+    bottom: -25%;
+}
+
+.slots-game-wrapper{
+    text-align: center;
+}
+.slots-game-head{
+    border-radius: 30px 30px 0 0;
+    background: url(../img/dark.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.slots-game-border{
+    background-color: #D1A26F;
+    width: 564px;
+    padding: 10px 20px;
+    border-radius: 5% 5% 30px 30px;
+}
+.slots-game-currency-count{
+    height: 90px;
+    display: flex;
+    justify-content: center
+}
+.slots-game-currency-count-text{
+    width: 50%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+.slots-game-currency-count-screw{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -10px;
+    left: -15px;
+    background-color: #D1A26F;
+}
+.slots-game-currency-count-screw-right{
+    left: 91%
+}
+#currency-count{
+    color: #D1A26F;
+    font: 400 32px/24px "Myriad pro";
+    margin-left: 10px
+}
+
+.slots-game-field{
+    padding: 5px 0;
+    background: url(../img/grey.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 524px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: inset 0px 6px 8px 0px rgba(0,0,0,0.75);
+}
+.slots-statistics{
+    padding-top: 20px;
+}
+.slots-statistics-ropes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.slots-statistics-ropes img{
+    width: 10%;
+}
+.slots-statistics-border{
+    background: url(../img/brown.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 20;
+    position: relative;
+    top: -30px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.75);
+    border-top: 7px solid #B8983D
+}
+.slots-statistics-list{
+    height: 300px;
+    background: url(../img/dark.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 0px 0px rgba(155,106,61,1);
+    overflow: hidden;
+}
+.slots-statistics-list-hover{
+    overflow: auto;
+    height: 100%;
+    width: 105%;
+}
+.slots-statistics-list-table{
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font: 400 18px/12px "Myriad pro";
+}
+.slots-statistics-list-table th{
+    padding: 15px;
+}
+.slots-statistics-list-table tbody tr td:first-child> span:before{
+    content: url(../img/table-arr.png);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 0;
+}
+.slots-statistics-list-table td{
+    position: relative;
+    width: 50%;
+}
+.slots-statistics-list-table td span{
+    border-bottom: 1px solid #fff;
+    padding: 15px;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    position: relative
+}
+.slots-input{
+    padding: 100px 20px;
+}
+.slots-input input{
+    background-color: #190D02;
+    border: none;
+    border-top: 5px solid #050301;
+    border-bottom: 5px solid #916F64;
+    border-radius: 30px;
+    height: 100px;
+    width: 100%;
+    max-width: 500px;
+    outline:    none;
+    font: 400 48px/24px "Myriad pro";
+    color: #fff;
+}
+.slots-spin{
+    padding: 110px 20px;
+}
+.slots-spin-btn{
+    font: 600 48px/12px "Myriad pro";
+    padding: 25px 120px;
+    background: linear-gradient(0deg, rgba(126,79,49,1) 0%, rgba(126,79,49,1) 37%, rgba(138,91,61,1) 77%, rgba(89,43,12,1) 100%);
+    border-radius: 50px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    user-select: none;
+}
+.slots-spin-btn-background{
+    padding: 10px;
+    position: relative;
+    border-radius: 50px;
+    display: inline-block;
+    cursor: pointer;
+    background: linear-gradient(74deg, rgba(64,37,20,1) 0%, rgba(64,37,20,1) 13%, rgba(180,131,102,1) 21%, rgba(110,63,33,1) 45%, rgba(123,75,45,1) 70%, rgba(157,109,80,1) 86%, rgba(89,43,12,1) 94%, rgba(89,43,12,1) 100%);
+}
+.slots-spin-btn-background-glass{
+    position: absolute;
+    width: 90%;
+    background: rgba(255,255,255,0.1);
+    height: 40px;
+    margin: 0 2%;
+    border-radius: 17px 16px 10px 10px;
+    z-index: 22;
+}
+.slots-spin-btn:active,.slots-spin-btn:focus{
+    outline: none;
+}
+.slots-spin-btn-background:active{
+    filter: brightness(91%)
+}
+.slots-start{
+    background: url(../img/кнопкастарт.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%
+}
+
