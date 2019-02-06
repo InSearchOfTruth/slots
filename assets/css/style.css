@@ -218,7 +218,7 @@ body{
     background: rgba(255,255,255,0.1);
     height: 40px;
     margin: 0 2%;
-    border-radius: 17px 16px 10px 10px;
+    border-radius: 17px 19px 10px 10px;
     z-index: 22;
 }
 .slots-spin-btn:active,.slots-spin-btn:focus{

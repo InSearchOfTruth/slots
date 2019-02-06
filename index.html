@@ -343,11 +343,38 @@
                 
                 gameLoop()
                 setTimeout(function(){
-                    rotate = false
+                    
+                    checkWin()
                 },timeDelay+100)
             }
             
             
+        }
+        let checkWin = function(){
+            let slotsType = []
+            for(let i = 0; i<gameField.length; i++){
+                for(slot of gameField[i].slots){
+                    if(slot.y == slot.height){
+                        //console.log(slot.type)
+                        slotsType.push(slot.type)
+                    }
+                }
+            }
+            let equalTypes 
+            function compareTypes(el){
+                return el === slotsType[0]
+            }
+
+            for(let k=0; k<1; k++){
+                
+                equalTypes = slotsType.every(compareTypes)
+            }
+           if(equalTypes){
+               alert('you win')
+               rotate = false
+           }else{
+                rotate = false
+           }
         }
         let gameLoop = function(){
             if(!rotate) return
