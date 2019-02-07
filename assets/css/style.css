@@ -19,7 +19,7 @@ body{
     position: relative;
 }
 .tap img{
-    width: 70%
+    width: 60%
 }
 .slots-buttons-btn{
     width: 140px;
@@ -33,7 +33,7 @@ body{
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 50px;
+    right: 75px;
     user-select: none;
 }
 .slots-buttons-btn:active{
@@ -49,7 +49,11 @@ body{
 .slots-buttons-btn-x05{
     bottom: -25%;
 }
-
+.slots-game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .slots-game-wrapper{
     text-align: center;
 }
@@ -64,7 +68,7 @@ body{
 
 .slots-game-border{
     background-color: #D1A26F;
-    width: 524px;
+    width: 424px;
     padding: 10px 10px;
     border-radius: 5% 5% 30px 30px;
 }
@@ -94,8 +98,11 @@ body{
     left: -11px;
     background-color: #D1A26F;
 }
+.slots-game-currency-count-screw img{
+    width: 70%;
+}
 .slots-game-currency-count-screw-right{
-    left: 89%
+    left: 86%
 }
 #currency-count{
     color: #D1A26F;
@@ -108,7 +115,7 @@ body{
     background: url(../img/grey.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    width: 504px;
+    width: 404px;
     border-radius: 0 0 30px 30px;
     box-shadow: inset 0px 6px 8px 0px rgba(0,0,0,0.75);
 }
@@ -195,8 +202,9 @@ body{
     color: #fff;
 }
 .slots-spin{
-    padding: 110px 20px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .slots-spin-btn{
     font: 600 32px/12px "Myriad pro";
