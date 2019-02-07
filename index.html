@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <div class="row slots-wrapper">
-            <div class="col-lg-3 slots-buttons-wrapper">
+            <div class="col-lg-4 slots-buttons-wrapper">
                 <div class="slots-buttons">
                     <div class="tap">
                         <img src="assets/img/кран.png" alt="">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="slots-statistics">
                     <div class="slots-statistics-ropes">
                         <img src="assets/img/rope.png" alt=""><img src="assets/img/rope.png" alt="">
@@ -114,9 +114,18 @@
                     <button class="slots-spin-btn" >spin</button>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="slots-start">
-                    
+            <div class="col-lg-4 slots-autospin-wrapper">
+                <div class="slots-autospin">
+                    <div class="slots-autospin-border">
+                        <img src="assets/img/рамка.png" alt="">
+                    </div>
+                    <div class="slots-autospin-button-wrapper">
+                        <div class="slots-autospin-button">
+                            <span>AUTOSPIN</span>
+                            <input type="checkbox" id="autospin-switch" onchange="autospinStart()" />
+                            <label for="autospin-switch" id="autospin-switch-label"><div class="autospin-switch-btn"><img src="assets/img/switch.png" alt=""></div> </label>
+                        </div>    
+                    </div>
                 </div>
             </div>
 
@@ -130,10 +139,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script>
-        var canvas = document.createElement('canvas');
-        var canvasWrapper = document.getElementById('canvas-wrapper')
-        var gameStart = document.getElementById('game-start')
-        var requestAnimationFrame =  window.requestAnimationFrame ||
+        let canvas = document.createElement('canvas');
+        let canvasWrapper = document.getElementById('canvas-wrapper')
+        let autospin = document.getElementById('autospin-switch')
+        let gameStart = document.getElementById('game-start')
+        let requestAnimationFrame =  window.requestAnimationFrame ||
                      window.webkitRequestAnimationFrame ||
                      window.mozRequestAnimationFrame ||
                      window.oRequestAnimationFrame ||
@@ -145,7 +155,7 @@
         window.requestAnimationFrame = requestAnimationFrame;
     
         //Общие игровые параметры
-        var gameParams = {
+        let gameParams = {
             slots: {
                 plum:{
                     'src'   : 'assets/img/lots/слива.png',
@@ -184,8 +194,8 @@
                     'type'  : 'coconut'
                 }
             },
-            slotHeight: 136,
-            slotWidth:  170,
+            slotHeight: 128,
+            slotWidth:  160,
             gameColumns: 3,
             gameDelay: 3000
 
@@ -196,8 +206,8 @@
         canvasContext = canvas.getContext('2d')
         // подгружаем изображение
         function loadImage(path,width,height,y,type){
-            var image = document.createElement('img');
-            var result = {
+            let image = document.createElement('img');
+            let result = {
                 dom: image,
                 width: width,
                 height: height,
@@ -260,7 +270,7 @@
             //gameSlotsArr.sort(compareRandom)
             return gameSlotsArr
         }
-        var gameSlots = gameSlotsCombine(gameParams.slots)
+        let gameSlots = gameSlotsCombine(gameParams.slots)
         let createGameField = function(slots){
             let gameField = []
             let numb = 0
@@ -382,6 +392,18 @@
             drawGameField(gameField)
             requestAnimationFrame(gameLoop)
         }
+        
+        
+        let autospinStart = function(){
+            if(autospin.checked){
+                gameRotate()
+                setTimeout(function(){
+                    autospinStart()
+                },gameParams.gameDelay+500)
+            }
+        }
+        
+        
     </script>
 </body>
 </html>
