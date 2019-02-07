@@ -124,7 +124,7 @@ body{
     width: 9%;
 }
 .slots-statistics-border{
-    background: url(../img/brown.jpg);
+    background: rgba(255, 152, 1, 0.38) ;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 20;
